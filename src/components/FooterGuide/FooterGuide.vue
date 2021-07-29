@@ -41,9 +41,11 @@ export default {
   position fixed
   left 0
   bottom  0
+  z-index 5
   height 50px
   display flex
   align-items center
+  background-color: #fff;
   li
     flex 1
     display flex
