@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
-import store from "@/vuex/store";
+import 'lib-flexible'
 
-//import "../css/bootstrap.less"
-import "../public/css/bootstrap.less"
+import router from "./router"
+
+
 Vue.config.productionTip = false
 
 new Vue({
-  store,
+  router,
   render: h => h(App),
 }).$mount('#app')
 

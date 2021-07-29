@@ -1,32 +1,34 @@
 <template>
-  <div id="app">
-  <Search/>
-    <Main/>
+  <div>
+    <router-view></router-view>
+
+    <FooterGuide/>
+
   </div>
 </template>
 
 <script>
-import Search from "@/components/Search";
-import Main from "@/components/Main";
+import FooterGuide from "@/components/FooterGuide/FooterGuide";
 
 export default {
   name: 'App',
-
   components:{
-    Search,
-    Main
+    FooterGuide
+  },
+  data() {
+    return {
+
+    }
   }
+
 
 }
 </script>
 
-<style scoped lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped lang="stylus" rel="stylesheet/stylus">
+@import "common/stylus/mixins.styl"
+
+
+
+
 </style>
