@@ -4,10 +4,16 @@ const postcss = px2rem({
     remUnit: 37.5
 })
 
-
-
 module.exports = {
     lintOnSave: false,
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:4000',
+                pathRewrite: {'^/api' : ''},
+                changeOrigin: true
+            }}
+    },
     css: { // 添加postcss配置
         loaderOptions: {
             postcss: {
@@ -16,5 +22,5 @@ module.exports = {
                 ]
             }
         }
-    },
+    }
 }

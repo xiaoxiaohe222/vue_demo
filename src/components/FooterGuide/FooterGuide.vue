@@ -25,8 +25,8 @@ export default {
   name: "FooterGuide",
   methods:{
     changeFooter(path){
-      this.$router.replace(path)
-
+      if (this.$route.path !== path){this.$router.replace(path)} //路径不同我们就跳转
+      else {location.href = path} //路径相同我们就刷新处理
     }
   }
 }

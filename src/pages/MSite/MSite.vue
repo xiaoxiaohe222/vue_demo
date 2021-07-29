@@ -1,19 +1,18 @@
 <template>
   <section class="msite">
     <!--首页头部-->
-    <header class="msite_header">
-            <span class="header_search">
+    <Header title="昌平区北七家宏福科技园(337省道北)">
+     <span class="header_search" slot="header-l">
               <i class="iconfont iconsearch" style="font-size: 22px;color: white;"></i>
             </span>
-      <span class="header_title">
-              <span class="header_title_text ellipsis">昌平区北七家宏福科技园(337省道北)</span>
-            </span>
-      <span class="header_login">
+      <span class="header_login" slot="header-r">
               <span class="header_login_text">登录|注册</span>
             </span>
-    </header>
+    </Header>
     <!--首页导航-->
     <nav class="msite_nav">
+
+
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -120,6 +119,8 @@
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
       </div>
+
+
     </nav>
     <!--首页附近商家-->
     <div class="msite_shop_list">
@@ -313,8 +314,25 @@
 </template>
 
 <script>
+import Swiper from "swiper/js/swiper"
+import "swiper/css/swiper.css"
+
+
 export default {
-  name: "MSite"
+  name: "MSite",
+  components: {
+
+  },
+  mounted() {
+  new Swiper(".swiper-container",{
+    direction :'horizontal',
+    loop:true,
+    pagination: {
+      el: '.swiper-pagination'
+    },
+  })
+  }
+
 }
 </script>
 
@@ -323,45 +341,6 @@ export default {
 
 .msite //首页
   width 100%
-  .msite_header
-    background-color #02a774
-    position fixed
-    z-index 100
-    left 0
-    top 0
-    width 100%
-    height 45px
-    .header_search
-      position absolute
-      left 15px
-      top 50%
-      transform translateY(-50%)
-      width 10%
-      height 50%
-      .icon-sousuo
-        font-size 25px
-        color #fff
-    .header_title
-      position absolute
-      top 50%
-      left 50%
-      transform translate(-50%, -50%)
-      width 50%
-      color #fff
-      text-align center
-      .header_title_text
-        font-size 20px
-        color #fff
-        display block
-    .header_login
-      font-size 14px
-      color #fff
-      position absolute
-      right 15px
-      top 50%
-      transform translateY(-50%)
-      .header_login_text
-        color #fff
   .msite_nav
     bottom-border-1px(#e4e4e4)
     margin-top 45px

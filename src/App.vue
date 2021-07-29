@@ -2,13 +2,14 @@
   <div>
     <router-view></router-view>
 
-    <FooterGuide/>
+    <FooterGuide v-if="$route.meta.isShowFooter"/>
 
   </div>
 </template>
 
 <script>
 import FooterGuide from "@/components/FooterGuide/FooterGuide";
+import {SAVE_ADDRESS} from "@/vuex/mutation_type";
 
 export default {
   name: 'App',
@@ -19,6 +20,9 @@ export default {
     return {
 
     }
+  },
+ async mounted() {
+    this.$store.dispatch(SAVE_ADDRESS)
   }
 
 
