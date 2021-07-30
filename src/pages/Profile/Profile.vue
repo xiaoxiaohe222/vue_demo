@@ -8,18 +8,18 @@
           </header>-->
     <Header title="个人"></Header>
 
-    <section class="profile-number" @click="$router.push('/login')">
+    <section class="profile-number" @click="toLogin">
       <a href="javascript:" class="profile-link">
         <div class="profile_image">
           <i class="iconfont iconwodedangxuan" style="font-size: 50px;color: #fff;"></i>
         </div>
         <div class="user-info">
-          <p class="user-info-top">登录/注册</p>
-          <p>
+          <p v-if="!user.phone" class="user-info-top">{{user.name ? user.name : "注册/登录"}}</p>
+          <p v-if="!user.name">
                 <span class="user-icon">
                   <i class="iconfont icon-shouji icon-mobile"></i>
                 </span>
-            <span class="icon-mobile-number">暂无绑定手机号</span>
+            <span class="icon-mobile-number">{{user.phone? user.phone : "暂无绑定手机号"}}</span>
           </p>
         </div>
         <span class="arrow">
@@ -101,10 +101,18 @@
 </template>
 
 <script>
-
+import {mapState} from "vuex"
 
 export default {
   name: "Profile",
+  computed:{
+    ...mapState(['user'])
+  },
+  methods:{
+    toLogin(){
+     !this.user._id  && this.$router.push("/login")
+    }
+  }
 
 }
 </script>

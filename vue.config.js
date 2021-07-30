@@ -22,5 +22,12 @@ module.exports = {
                 ]
             }
         }
+    },
+    //配置原始的webpack配置文件
+
+    configureWebpack:{
+
     }
+
+
 }

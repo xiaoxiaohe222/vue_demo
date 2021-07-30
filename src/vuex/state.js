@@ -5,5 +5,7 @@ export  default {
     address: {}, // 地址信息对象
     categories: [], // 分类数组
     shops: [], //商家数组
+    user:{},
+    token:""
 
 }
