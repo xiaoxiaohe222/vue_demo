@@ -9,7 +9,8 @@
 
 <script>
 import FooterGuide from "@/components/FooterGuide/FooterGuide";
-import {SAVE_ADDRESS} from "@/vuex/mutation_type";
+import {reqAutoLogin} from "@/api";
+import {SAVE_USER} from "@/vuex/mutation_type";
 
 export default {
   name: 'App',
@@ -22,7 +23,12 @@ export default {
     }
   },
  async mounted() {
-    this.$store.dispatch(SAVE_ADDRESS)
+
+   const result = await reqAutoLogin()
+   if (result.code === 0){
+     this.$store.commit(SAVE_USER,result.data)
+   }
+
   }
 
 

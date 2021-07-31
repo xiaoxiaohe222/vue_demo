@@ -1,10 +1,16 @@
 //多个间接更新状态数据的对象
 //包括异步请求和逻辑代码
 import {reqAddress, reqFoodCategories, reqShops} from "@/api";
-import {SAVE_ADDRESS, SAVE_CATEGORIES, SAVE_SHOPS, SAVE_USER, SAVE_TOKEN} from "./mutation_type"
+import {DEL_TOKEN,DEL_USER,SAVE_ADDRESS, SAVE_CATEGORIES, SAVE_SHOPS, SAVE_USER, SAVE_TOKEN} from "./mutation_type"
 
 
 export default {
+    //请求删除user
+    [DEL_USER]({commit}){
+        localStorage.removeItem("user_token")
+        commit(DEL_TOKEN)
+        commit(DEL_USER)
+    },
 
     //请求提交保存地址
     async [SAVE_ADDRESS]({commit, state}) {

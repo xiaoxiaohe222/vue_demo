@@ -14,7 +14,8 @@
           <i class="iconfont iconwodedangxuan" style="font-size: 50px;color: #fff;"></i>
         </div>
         <div class="user-info">
-          <p v-if="!user.phone" class="user-info-top">{{user.name ? user.name : "注册/登录"}}</p>
+          <p v-if="!user.phone"
+             class="user-info-top">{{user.name ? user.name : "注册/登录"}}</p>
           <p v-if="!user.name">
                 <span class="user-icon">
                   <i class="iconfont icon-shouji icon-mobile"></i>
@@ -95,6 +96,9 @@
         </div>
       </a>
     </section>
+    <mt-button style="width: 100%;margin-top: 10px" type="danger"
+    @click="logOut"
+    >退出登录</mt-button>
   </section>
 
 
@@ -102,15 +106,34 @@
 
 <script>
 import {mapState} from "vuex"
+import { Button,MessageBox } from 'mint-ui';
+import {DEL_USER} from "@/vuex/mutation_type";
 
 export default {
   name: "Profile",
+  components:{
+    [Button.name]: Button
+  },
   computed:{
     ...mapState(['user'])
   },
   methods:{
     toLogin(){
      !this.user._id  && this.$router.push("/login")
+    },
+    //退出登录 删除vuex里面的user和token  删除localstorage里面的token
+    logOut(){
+      MessageBox.confirm('确定退出吗?').then(() => {
+        this.$store.dispatch(DEL_USER)
+        this.$router.replace("/login")
+      });
+
+
+    }
+  },
+  mounted() {
+    window.onbeforeunload = function (){
+      alert(11)
     }
   }
 

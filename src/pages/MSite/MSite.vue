@@ -101,7 +101,7 @@
 <script>
 import Swiper from "swiper/js/swiper"
 import "swiper/css/swiper.css"
-import {SAVE_CATEGORIES, SAVE_SHOPS} from "@/vuex/mutation_type";
+import {SAVE_ADDRESS, SAVE_CATEGORIES, SAVE_SHOPS} from "@/vuex/mutation_type";
 
 
 import {mapState} from "vuex"
@@ -150,8 +150,10 @@ export default {
   },
   mounted() {
     //将后台数据捞到vuex中
+    this.$store.dispatch(SAVE_ADDRESS);
     this.$store.dispatch(SAVE_CATEGORIES)
     this.$store.dispatch(SAVE_SHOPS)
+
   }
 
 }
