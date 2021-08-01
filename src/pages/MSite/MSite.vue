@@ -45,7 +45,7 @@
 
       <div class="shop_container">
         <ul v-if="shops.length>0" class="shop_list">
-          <li @click="$router.replace('/shop')" v-for="(shop) in shops" :key="shop.id" class="shop_li border-1px">
+          <li @click="$router.push('/shop')" v-for="(shop) in shops" :key="shop.id" class="shop_li border-1px">
             <a>
               <div class="shop_left">
                 <img class="shop_img" :src="shop.image_path">

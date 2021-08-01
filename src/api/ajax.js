@@ -7,7 +7,7 @@ import {Indicator} from 'mint-ui';
 const instance = axios.create({
     baseURL: "/api",
     timeout: 20000,
-    //headers: {'X-Custom-Header': 'foobar'}
+
 });
 //配置请求拦截器
 instance.interceptors.request.use(function (config) {

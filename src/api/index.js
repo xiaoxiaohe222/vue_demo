@@ -50,3 +50,9 @@ export  const reqAutoLogin = () => ajax("/auto_login",{
         needToken:true
     }
 })
+
+// 7. 测试mock接口
+export const test = () => ajax("/test")
+
+// 8. 通过mock接口获取shopData数据
+export const reqShopData = () => ajax("/getShopData")
