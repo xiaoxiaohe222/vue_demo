@@ -38,6 +38,9 @@
         </ul>
       </div>
     </div>
+
+<!--    底部购物栏-->
+    <ShopCart :goods="goods"/>
   </div>
 </template>
 
@@ -45,11 +48,13 @@
 import BScroll from '@better-scroll/core'
 import {mapState} from "vuex"
 import CartControl from "@/components/CartControl/CartControl";
+import ShopCart from "@/components/ShopCart/ShopCart";
 
 export default {
   name: "Food",
   components:{
-    CartControl
+    CartControl,
+    ShopCart
   },
   data() {
     return {
@@ -136,7 +141,7 @@ export default {
   watch: {
     goods() {
       this.$nextTick(() => {
-        console.log(this.goods);
+        //console.log(this.goods);
         this._initScroll()
         this._initLiHeights()
         this._scrollEvent()
@@ -156,8 +161,7 @@ export default {
   .food-l
     width 80px
     background-color: #f3f5f7
-    height calc(100vh - 224px)
-
+    height calc(100vh - 272px)
     .navList
       li
         width 100%
@@ -165,11 +169,9 @@ export default {
         line-height 50px
         text-align center
         position relative
-
         &.on
           color $green
           background-color: #fff;
-
         &::after
           content ""
           width 80%
@@ -179,14 +181,11 @@ export default {
           left 50%
           bottom 0
           transform translateX(-50%)
-
   .food-r
     width calc(100vw - 80px)
-    height calc(100vh - 224px)
-
+    height calc(100vh - 224px - 48px)
     .foods-wrapper
       flex: 1
-
       .title
         padding-left: 14px
         height: 26px
@@ -195,58 +194,46 @@ export default {
         font-size: 12px
         color: rgb(147, 153, 159)
         background: #f3f5f7
-
       .food-item
         display: flex
         margin: 18px
         padding-bottom: 18px
         bottom-border-1px(rgba(7, 17, 27, 0.1))
-
         &:last-child
           border-none()
           margin-bottom: 0
-
         .icon
           flex: 0 0 57px
           margin-right: 10px
-
         .content
           flex: 1
-
           .name
             margin: 2px 0 8px 0
             height: 14px
             line-height: 14px
             font-size: 14px
             color: rgb(7, 17, 27)
-
           .desc, .extra
             line-height: 10px
             font-size: 10px
             color: rgb(147, 153, 159)
-
           .desc
             line-height: 12px
             margin-bottom: 8px
-
           .extra
             .count
               margin-right: 12px
-
           .price
             font-weight: 700
             line-height: 24px
-
             .now
               margin-right: 8px
               font-size: 14px
               color: rgb(240, 20, 20)
-
             .old
               text-decoration: line-through
               font-size: 10px
               color: rgb(147, 153, 159)
-
           .cartcontrol-wrapper
             position: absolute
             right: 0

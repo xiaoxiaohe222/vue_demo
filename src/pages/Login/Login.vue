@@ -55,13 +55,18 @@
               </section>
             </section>
           </div>
-          <button class="login_submit" @click.prevent="login">登录</button>
+          <button class="login_submit" @click.prevent="login">{{$t('login')}}</button>
         </form>
         <a href="javascript:;" class="about_us">关于我们</a>
       </div>
       <a href="javascript:" class="go_back" @click="$router.back()">
         <i class="iconfont iconleft"></i>
       </a>
+    </div>
+
+    <div class="languageContainer" style="margin-top:20px;display: flex;justify-content: space-around">
+      <mt-button type="primary" @click="changeLanguage('chinese')">中文</mt-button>
+      <mt-button type="primary" @click="changeLanguage('en')">英文</mt-button>
     </div>
   </section>
 
@@ -70,9 +75,12 @@
 <script>
 import {reqGetCode} from "@/api";
 import {SAVE_USER} from "@/vuex/mutation_type";
-import { MessageBox } from 'mint-ui';
+import { MessageBox,Button } from 'mint-ui';
 export default {
   name: "Login",
+  components:{
+    [Button.name]:Button
+  },
   data(){
     return {
       phone:"",
@@ -94,6 +102,13 @@ export default {
     }
   },
   methods:{
+
+
+    changeLanguage(language){
+      this.$i18n.locale = language;
+    },
+
+
   async  getCode(){
 
      this.waitingCode=false;
@@ -138,18 +153,14 @@ export default {
            MessageBox('提示', loginResult.msg);
          }
        }
-
        if (loginResult.code === 0){
          //说明登录成功
          MessageBox('提示', "登录成功");
          //将用户信息存入到vuex中
           this.$store.dispatch(SAVE_USER,loginResult.data);
-
           //跳转到个人中心页面
          this.$router.replace("/profile")
        }
-
-
 
      }else {
        alert("未通过前台验证")

@@ -10,6 +10,7 @@ import router from "./router"
 import Header from "@/components/Header/Header";
 import Star from "@/components/Star/Star";
 import store from "@/vuex/store";
+import i18n from './i18n'
 
 
 Vue.prototype.$API = API;
@@ -25,7 +26,8 @@ Vue.component("Star",Star)
 new Vue({
   router,
   store,
-  render: h => h(App),
+  i18n,
+  render: h => h(App)
 }).$mount('#app')
 
 

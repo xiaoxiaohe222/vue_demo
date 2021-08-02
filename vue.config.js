@@ -6,6 +6,7 @@ const postcss = px2rem({
 
 module.exports = {
     lintOnSave: false,
+
     devServer: {
         proxy: {
             '/api': {
@@ -14,6 +15,7 @@ module.exports = {
                 changeOrigin: true
             }}
     },
+
     css: { // 添加postcss配置
         loaderOptions: {
             postcss: {
@@ -23,11 +25,19 @@ module.exports = {
             }
         }
     },
+
     //配置原始的webpack配置文件
 
     configureWebpack:{
 
+    },
+
+    pluginOptions: {
+      i18n: {
+        locale: 'en',
+        fallbackLocale: 'en',
+        localeDir: 'locales',
+        enableInSFC: false
+      }
     }
-
-
 }
